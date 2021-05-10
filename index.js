@@ -1,9 +1,14 @@
 // Require the framework and instantiate it
 const fastify = require('fastify')({ logger: true })
 
-// Register route
+// Register plugins
+// db connection
+fastify.register(require('./config/db'))
+// dbTest route
+fastify.register(require('./routes/dbTest'))
 // ping route
 fastify.register(require('./routes/ping'))
+
 
 // Run the server!
 const start = async () => {
